@@ -13,7 +13,7 @@ headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 vid = cv2.VideoCapture(1,cv2.CAP_DSHOW) 
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5s', force_reload=True, trust_repo=True) 
-model = torch.hub.load('ultralytics/yolov5', 'custom', r'G:\Fall 22 ASU\Sem3\Programming For Internet Of Things\Final_project\content\yolov5\runs\train\exp2\weights\best.pt')
+model = torch.hub.load('ultralytics/yolov5', 'custom', 'best.pt')
 start = datetime.datetime.now()
 
 while(True): 
