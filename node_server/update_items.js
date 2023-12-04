@@ -7,9 +7,17 @@ function updateData() {
     })
 }
 function start() {
-    
     let apple_temp = document.getElementsByClassName("apple")[0];
-    document.body.appendChild(apple_temp.content);
+
+    console.log(apple_temp.content);
+    
+    let show_tag = document.getElementsByClassName("show-apple")[0];
+
+    let content = show_tag.content;
+
+    content.querySelector('#show').innerHTML = apple_temp.content;
+
+    
     setInterval("updateData()", 300);
 }
 
