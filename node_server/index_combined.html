@@ -1,0 +1,474 @@
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2c3e460e2b.js" crossorigin="anonymous"></script>
+  <script>
+    
+
+function updateData() {
+let display_tag = document.getElementById("show")
+
+let apple_temp = document.getElementsByClassName("apple")[0];
+let milk_temp = document.getElementsByClassName("milk")[0];
+let avocado_temp = document.getElementsByClassName("avocado")[0];
+let peanut_butter_temp = document.getElementsByClassName("peanut_butter")[0];
+let nutella_temp = document.getElementsByClassName("nutella")[0];
+let salt_temp = document.getElementsByClassName("salt")[0];
+
+let apple_cost = 1.20;
+let avocado_cost = 0.75;
+let milk_cost = 3.00;
+let nutella_cost = 11.00;
+let peanut_butter_cost = 11.08;
+let salt_cost = 3.79;
+
+  loadURL("http://localhost:3000/send_data", function (data) {
+    
+    if(JSON.stringify(data).length != 0 || '{}')
+    {
+    const msg = JSON.parse(data);  
+    const count_arr = [0,0,0,0,0,0];
+    const calc_price = [0,0,0,0,0,0];      
+    for(let i=0;i<msg.length;i++)
+    {
+      //console.log(msg[i].class[0])
+      switch((msg[i].class[0])) {
+        case 0:
+          if(display_tag.querySelector('.salt_disp')===null)
+          {
+            display_tag.innerHTML += apple_temp.innerHTML;
+            var data = document.getElementsByClassName('apple_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[0] = (parseFloat(tag.innerHTML))*apple_cost;
+            count_arr[0] = count_arr[0] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('apple_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("apple_price")[0];
+            count_arr[0] = count_arr[0] + 1;
+            tag.innerHTML = count_arr[0];
+            calc_price[0] = (parseFloat(tag.innerHTML))*apple_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[0].toFixed(4));
+          }    
+        case 1:
+          if(display_tag.querySelector('.avocado_disp')===null)
+          {
+            display_tag.innerHTML += avocado_temp.innerHTML;
+            var data = document.getElementsByClassName('avocado_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[1] = (parseFloat(tag.innerHTML))*avocado_cost;
+            count_arr[1] = count_arr[1] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('avocado_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("avocado_price")[0];
+            count_arr[1] = count_arr[1] + 1;
+            tag.innerHTML = count_arr[1];
+            calc_price[1] = (parseFloat(tag.innerHTML))*avocado_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[1].toFixed(4));
+          }
+        case 2:
+          if(display_tag.querySelector('.milk_disp')===null)
+          {
+            display_tag.innerHTML += milk_temp.innerHTML;
+            var data = document.getElementsByClassName('milk_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[2] = (parseFloat(tag.innerHTML))*milk_cost;
+            count_arr[2] = count_arr[2] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('milk_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("milk_price")[0];
+            count_arr[2] = count_arr[2] + 1;
+            tag.innerHTML = count_arr[2];
+            calc_price[2] = (parseFloat(tag.innerHTML))*milk_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[2].toFixed(4));
+          }
+        case 3:
+          if(display_tag.querySelector('.nutella_disp')===null)
+          {
+            display_tag.innerHTML += nutella_temp.innerHTML;
+            var data = document.getElementsByClassName('nutella_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[3] = (parseFloat(tag.innerHTML))*nutella_cost;
+            count_arr[3] = count_arr[3] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('nutella_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("nutella_price")[0];
+            count_arr[3] = count_arr[3] + 1;
+            tag.innerHTML = count_arr[3];
+            calc_price[3] = (parseFloat(tag.innerHTML))*nutella_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[3].toFixed(4));
+          }
+        case 4:
+          if(display_tag.querySelector('.peanut_butter_disp')===null)
+          {
+            display_tag.innerHTML += peanut_butter_temp.innerHTML;
+            var data = document.getElementsByClassName('peanut_butter_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[4] = (parseFloat(tag.innerHTML))*peanut_butter_cost;
+            count_arr[4] = count_arr[4] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('peanut_butter_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("peanut_butter_price")[0];
+            count_arr[4] = count_arr[4] + 1;
+            tag.innerHTML = count_arr[4];
+            calc_price[4] = (parseFloat(tag.innerHTML))*peanut_butter_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[4].toFixed(4));
+          }
+
+        case 5:
+          if(display_tag.querySelector('.salt_disp')===null)
+          {
+            display_tag.innerHTML += salt_temp.innerHTML;
+            var data = document.getElementsByClassName('salt_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            calc_price[5] = (parseFloat(tag.innerHTML))*salt_cost;
+            count_arr[5] = count_arr[5] + 1;
+          }
+          else
+          {
+            var data = document.getElementsByClassName('salt_disp')[0];
+            var tag = data.getElementsByClassName("fw-normal")[0];
+            var price = data.getElementsByClassName("salt_price")[0];
+            count_arr[5] = count_arr[5] + 1;
+            tag.innerHTML = count_arr[5];
+            calc_price[5] = (parseFloat(tag.innerHTML))*salt_cost;
+            price.innerHTML = "$ " + Math.round(calc_price[5].toFixed(4));
+          }
+          let number_of_stuff= document.getElementsByClassName("nos_items")[0];
+          let total_tag = document.getElementsByClassName("total_price")[0];
+          let sum = 0;
+          let total = 0;
+
+          count_arr.forEach( num => {
+            sum += num;
+                })
+
+          calc_price.forEach( num => {
+            total += num;
+                })
+
+          number_of_stuff.innerHTML = "You have " + sum + " items in your cart";
+          total_tag.innerHTML = "$ " + Math.round(total); 
+          console.log(total)  
+      
+    }
+    
+    }
+   
+}
+  })
+
+}
+
+
+function start() {
+        
+      
+    setInterval("updateData()", 300);
+}
+
+
+  </script>
+  <script>
+    function getXMLHTTPRequest()
+{
+    var request;
+    // Lets try using ActiveX to instantiate the XMLHttpRequest object
+    try{
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+    }catch(ex1){
+        try{
+            request = new ActiveXObject("Msxml2.XMLHTTP");
+        }catch(ex2){
+            request = null;
+        }
+    }
+
+    // If the previous didn't work, lets check if the browser natively support XMLHttpRequest
+    if(!request && typeof XMLHttpRequest != "undefined"){
+        //The browser does, so lets instantiate the object
+        request = new XMLHttpRequest();
+    }
+
+    return request;
+}
+
+
+function loadURL(filename, callback)
+{
+    var aXMLHttpRequest = getXMLHTTPRequest();
+    var allData;
+
+    if (aXMLHttpRequest)
+    {
+        aXMLHttpRequest.open("GET", filename, true);
+
+      aXMLHttpRequest.onreadystatechange = function (aEvt) {
+        if(aXMLHttpRequest.readyState == 4){
+        allData = aXMLHttpRequest.responseText;
+        //console.log(allData)
+        callback(allData)
+        }
+      };
+
+      //Lets fire off the request
+        aXMLHttpRequest.send(null);
+    }
+    else
+    {
+        //Oh no, the XMLHttpRequest object couldn't be instantiated.
+        alert("A problem occurred instantiating the XMLHttpRequest object.");
+    }
+}
+
+  </script>
+  <script>
+
+
+  </script>
+</head>
+
+<body onload='start()'>
+  <div id="results">
+  </div>
+  <section class="h-100 h-custom" style="background-color: #eee;">
+    <h1 class="display-1" style="text-align: center;">Grocery Sync</h1>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+
+              <div class="row">
+
+                <div id="show"  class="col-lg-7">
+                  <h5 class="mb-3"><a href="#!" class="text-body">Shopping Cart</a></h5>
+                  <hr>
+
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                      <p class="mb-0 nos_items">You have 0 items in your cart</p>
+                    </div>
+                  </div>
+                  <template class="apple">
+                    <div class="card mb-3 apple_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/gJX5hN5Z/Apple.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Apple</h5>
+                              <p class="small mb-0">Fuji Apple</p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 apple_price">$1.20</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <template class="avocado">
+                    <div class="card mb-3 avocado_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/XJRPk9SD/Avocados.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Avocado</h5>
+                              <p class="small mb-0"></p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 avocado_price">$0.75</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <template class="milk">
+                    <div class="card mb-3 milk_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/m2Gqc3SP/Milk.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Milk</h5>
+                              <p class="small mb-0">Great Value</p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 milk_price">$3.00</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <template class="nutella">
+                    <div class="card mb-3 nutella_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/pVj4XcKN/Nutella.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Nutella</h5>
+                              <p class="small mb-0"></p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 nutella_price">$11.00</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <template class="peanut_butter">
+                    <div class="card mb-3 peanut_butter_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/gj3TSrGc/Peanut-butter.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Peanut butter</h5>
+                              <p class="small mb-0">JIF</p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 peanut_butter_price">$11.80</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <template class="salt">
+                    <div class="card mb-3 salt_disp">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                              src="https://i.postimg.cc/wBPL1VLZ/Salt.jpg"
+                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            </div>
+                            <div class="ms-3">
+                              <h5>Salt</h5>
+                              <p class="small mb-0">Great Value</p>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 50px;">
+                              <h5 class="fw-normal mb-0">1</h5>
+                            </div>
+                            <div style="width: 80px;">
+                              <h5 class="mb-0 salt_price">$3.79</h5>
+                            </div>
+                            <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3 total_disp">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex flex-row align-items-center">
+              <div class="ms-3">
+                <h5>Total : </h5>
+              </div>
+            </div>
+            <div class="d-flex flex-row align-items-center">
+              <div style="width: 80px;">
+                <h5 class="mb-0 total_price">$ 0.0</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+</body>
+
+</html>

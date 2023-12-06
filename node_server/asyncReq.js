@@ -34,7 +34,7 @@ function loadURL(filename, callback)
       aXMLHttpRequest.onreadystatechange = function (aEvt) {
         if(aXMLHttpRequest.readyState == 4){
         allData = aXMLHttpRequest.responseText;
-        console.log(allData)
+        //console.log(allData)
         callback(allData)
         }
       };

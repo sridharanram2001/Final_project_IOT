@@ -24,14 +24,15 @@ while(True):
         ret, frame = vid.read() 
         cv2.imshow('frame', frame)
     
-    if diff.total_seconds()>1.0:
+    if diff.total_seconds()>3.0:
         result = model(frame)
         pred = result.pandas().xywh
-        df = pred[0]
-        
+        df = pred[0].head(1)
+        #print(df)
         #print(df.to_json())
         if(not(df['confidence'].values.size == 0)):
-            if(df['confidence'].values[0]>0.5):
+            if(df['confidence'].values[0]>0.6):
+                print(df)
                 r = requests.post(url, data=df.to_json(), headers=headers)
         
         start = datetime.datetime.now()
