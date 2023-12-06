@@ -7,7 +7,7 @@ import requests
 import json
 import time
 
-url = "http://localhost:3000/pred"
+url = "http://54.196.154.99:3000/pred"
 data = {}
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
